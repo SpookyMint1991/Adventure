@@ -14,7 +14,7 @@ As the story progresses towards their goal, some events will take place that wil
 
 The story will consist of 15-20 different situations, some are group events that will either help or harm all the characters, others will be sole events--affecting only one character either by the users choice or by random.
 
-Most events will be inportant to the characters success. Bad choices will harm the characters amd if enough damage is dealt, characters can die and their story will end. All events will be completed and at the end the characters stats will be read, noting how successful the adventure was. Alive characters will guarantee a successful adventure.  
+Most events will be inportant to the characters success. Bad choices will harm the characters and if enough damage is dealt, characters can die and their story will end. All events will be completed and at the end the characters stats will be read, noting how successful the adventure was. Alive characters will guarantee a successful adventure.  
 
 ---------------------------------------------------------
 
