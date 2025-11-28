@@ -26,4 +26,6 @@ public abstract class GameCharacter
     public void setCharPoints() {}
 
     public void getCharPoints() {}
+
+    public void getStats() {}
 }

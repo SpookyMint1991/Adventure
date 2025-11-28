@@ -12,7 +12,7 @@ public class Adventure
         knight.setStrPoints();
         knight.setCharPoints();
 
-        knight.getHP();
+        knight.getStats();
 
     }
 }
