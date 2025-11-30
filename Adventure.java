@@ -89,39 +89,61 @@ public class Adventure
 
         System.out.println("As they approach the windmill, it collapses.");
 
+        System.out.println("The Adventurers continue on their way.");
+
 
         //Day 5
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("As the Adventurers continue on their way, they exit the plains into the mountainous terrain.");
+        System.out.println("But they run into yet another issue. The path has been split, creating a new massive gorge.");
+        System.out.println("Now they are faced with out will they get back onto the path on the other side?");
+
+        System.out.println("Will they climb up the mountains and over to the other side?");
+        System.out.println("Will they climb down the gorge and cross from the valley floor?");
 
 
         //Day 6
+        System.out.println("The Adventurers climb the mountain. They follow a rocky turning snowy path to the top.");
+        System.out.println("They then are faced with a gate and a eerie castle.");
+        System.out.println("It's not long before they are met with guards and a princess.");
+
         System.out.println("");
         System.out.println("");
         System.out.println("");
 
+        System.out.println("The Adventurers climb down into the gorge. They stumble their way across the earthen floor.");
+        System.out.println("Before long they find a large cave with small amounts of gold... A dragons cave.");
+        System.out.println("As they approach, they hear and feel a gust of air behind them... the dragon behind them.");
 
         //Day 7
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("The Adventurers make their way, finally, on the other side of the gorge and back onto ");
+        System.out.println("their path to the statue.");
+        System.out.println("The landscape calms as the mountainous terrain softens into rolling hills and poppy fields.");
+        System.out.println("The path winds between and over hills, following the contour of the land. The path is mindless");
+        System.out.println("and long, uneventful.");
+        System.out.println("That is until the Adventures come across a merchant and his broken wagon.");
 
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
 
         //Day 8
-        System.out.println("");
-        System.out.println("");
+        System.out.println("After the merchant, the Adventurers continue, but are quickly stopped by a bickering couple.");
+        System.out.println("A witch and a warlock. They demand advice for their situation");
         System.out.println("");
 
 
         //Day 9
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("The Adventurers are tired and know that the path they are on is way to long for their journey.");
+        System.out.println("They decide to search for a short cut. They know they can pass through the closes city or");
+        System.out.println("to risk traveling through the mystical pinkwood forest.");
+
+        System.out.println("Which with they choose?");
+        System.out.println("City");
+        System.out.println("Forest");
 
 
         //Day 10
-        System.out.println("");
+        System.out.println("This is to be decided...");
         System.out.println("");
         System.out.println("");
 
