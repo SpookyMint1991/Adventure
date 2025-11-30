@@ -56,26 +56,38 @@ public class Adventure
         System.out.println("They are greeted by guards outside the village walls. They aren't happy people.");
         System.out.println("You shall not enter, the Guards yell. You must convince them to let you in.");
 
-        //add the choices and consequences.
+        //add the choices, the texts, and consequences.
 
         
 
         //Day 2
-        System.out.println("Leaving the Village, the Adventurers go down ");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("Leaving the Village, the Adventurers enter further into the woods. ");
+        System.out.println("After many hours they come to a fork in the path. One path, Dark, twisted trees");
+        System.out.println("and shifting shadows. The other path, lit with warm light and lined with clover and daisies.  ");
 
+
+        System.out.println("The Adventurers choose the Dark, twisted path and continue on their way.");
+        
+        System.out.println("The Adventurers chose the Light, floral path and continues on their way.");
 
         //Day 3
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("As the Adventurers follow their chosen path...");
+
+        System.out.println("They are ambushed by a band of Elves, all armed with long swords, bows, and staffs.");
+
+        System.out.println("They exit the creepy path into a contrasting clearing with a crystaline lagoon.");
+        System.out.println("Where they are met with a copperous and emerald gilded serpent.");
 
 
         //Day 4
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("The Adventurers make it out if the woods into the open plains.");
+        System.out.println("The quickly find their path and get a move on. But it is not very long before they sight");
+        System.out.println("the first building in their path, an old abandonded windmill.");
+        System.out.println("Do the Adventurers search the windmill?");
+
+        System.out.println("As they enter the structure they are meet with an old mad man with a canon.");
+
+        System.out.println("As they approach the windmill, it collapses.");
 
 
         //Day 5
