@@ -1,5 +1,8 @@
+package characters;
 
-public class Thief extends GameCharacter
+import characters.GameCharacter;
+
+public class Mage extends GameCharacter
 {
     private int healthPoints;
     private int manaPoints;
@@ -7,12 +10,13 @@ public class Thief extends GameCharacter
     private int strengthPoints;
     private int charismaPoints;
 
-    public Thief() {}
+    public Mage()
+    {}
 
     @Override
     public void getStats() 
     {
-        System.out.println("The Thiefs stats: ");
+        System.out.println("The Mages stats: ");
         System.out.println("Health    = " + healthPoints);
         System.out.println("Mana      = " + manaPoints);
         System.out.println("Stealth   = " + stealthPoints);
@@ -29,7 +33,7 @@ public class Thief extends GameCharacter
     @Override
     public void getHP()
     {
-        System.out.println("The Thief has " + healthPoints + " health.");
+        System.out.println("The Mage has " + healthPoints + " health.");
     }
     
     public void updateHP(int upHP)
@@ -40,48 +44,48 @@ public class Thief extends GameCharacter
     @Override
     public void setMP()
     {
-        this.manaPoints = 3;
+        this.manaPoints = 10;
     }
 
     @Override
     public void getMP()
     {
-        System.out.println("The Thief has " + manaPoints + " mana.");
+        System.out.println("The Mage has " + manaPoints + " mana.");
     }
 
     @Override
     public void setSP()
     {
-        this.stealthPoints = 10;
+        this.stealthPoints = 8;
     }
 
     @Override
     public void getSP()
     {
-        System.out.println("The Thief has " + stealthPoints + " stealth.");
+        System.out.println("The Mage has " + stealthPoints + " stealth.");
     }
 
     @Override
-     public void setStrPoints()
+    public void setStrPoints()
     {
-        this.strengthPoints = 5;
+        this.strengthPoints = 3;
     }
 
     @Override
     public void getStrPoints()
     {
-         System.out.println("The Thief has " + strengthPoints + " strength.");
+         System.out.println("The Mage has " + strengthPoints + " strength.");
     }
 
     @Override
     public void setCharPoints()
     {
-        this.charismaPoints = 8;
+        this.charismaPoints = 5;
     }
     
     @Override
     public void getCharPoints()
     {
-        System.out.println("The Thief has " + charismaPoints + " charisma.");
+        System.out.println("The Mage has " + charismaPoints + " charisma.");
     }
 }
