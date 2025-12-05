@@ -4,6 +4,7 @@ import characters.GameCharacter;
 import characters.Knight;
 import characters.Mage;
 import characters.Thief;
+import java.util.Scanner;
 
 public class Story implements Runnable
 {
@@ -28,83 +29,141 @@ public class Story implements Runnable
         System.out.println();
     }
 
+    public void tenDayStory(Knight kn)
+    {
+        Scanner scnr = new Scanner(System.in);
+        DiceRoll dice = new DiceRoll();
+
+        if (kn.getHP() != 0){
+            if (kn.getDays() == 1)
+            {
+                // Day 1 Prompt
+                System.out.println("The Adventurers come across a small village in the middle of the woods, in search of supplies."); 
+                System.out.println("They are greeted by guards outside the village walls. They aren't happy people.");
+                System.out.println("You shall not enter, the Guards yell. You must convince them to let you in.");
+                System.out.println("What will the Adventurers do?");
+                System.out.println();
+                System.out.println("==========================================================================================");
+                System.out.println();
+
+                // Day 1 Choices
+                System.out.println("[A] Fight the Guards.");
+                System.out.println("[B] Talk to the Guards.");
+                System.out.println("[C] Leave the Village.");
+
+                System.out.println();
+                System.out.println("==========================================================================================");
+                System.out.println();
+
+                String choice = scnr.next(); 
+
+                switch(choice)
+                {
+                    case "A": 
+                        if (kn.getStrP() >= dice.rollDice())
+                        {
+                            // If they fight and win -> enter the village -> cannot trade with villagers.
+                            System.out.println("The Adventurers win against the guards and enter the village."); // get nothing from this fight
+                            System.out.println("The Villagers fear the Adventurers and flee from them.");
+                            System.out.println("The Adventurers leave the Village empty handed.");
+                        }
+                        else
+                        {
+                            // If they fight and lose -> cannot enter the village -> Adventurers that fought lose 1 HP.
+                            System.out.println("The Adventurer failed to defeat the Guards and lost 1 HP.");
+                            kn.updateHP(-1);
+                            System.out.println("The Adventurers leave the Village.");
+                        }
+                    case "B":
+                        if (kn.getCharP() >= dice.rollDice())
+                        {
+                            // If they talk and succeed -> enter the village -> They can trade with villagers.
+                            System.out.println("The Adventurers succeeded to convince the Guards to let them in.");
+                            System.out.println("Three Villagers walk up the party and want to trade, but the party has");
+                            System.out.println("very little to give, they can only trade with one.");
+                            System.out.println("Who will you trade with?");
+                            
+                            System.out.println();
+                            System.out.println("==========================================================================================");
+                            System.out.println();
+
+                            System.out.println("[A] The Tavern Keeper");
+                            System.out.println("[B] The Seamstress");
+                            System.out.println("[C] The Blacksmith");
+
+                            System.out.println();
+                            System.out.println("==========================================================================================");
+                            System.out.println();
+
+                            choice = scnr.next();
+                            
+                            switch (choice)
+                            {
+                                case "A":
+                                {
+                                    // option 1
+                                    System.out.println("The party buys an Elixir of Swiftness"); // increases the Knights stealth by 2 points
+                                    System.out.println("The Knight uses the Elixir and begins to feel lighter on their feet.");
+                                    kn.updateSP(2);
+                                }
+                                case "B":
+                                {
+                                    // option 2
+                                    System.out.println("The party buys a Silver-lined Cloak"); // increases the Mages strength by 2 points
+                                    System.out.println("The Mage puts on the cloak and begins to feel stronger than before.");
+                                }
+                                case "C":
+                                {
+                                    // option 3
+                                    System.out.println("The party buys a Sharpened Dragon Fang Dagger."); // increases the Thiefs strength by 2 points
+                                    System.out.println("The Thief wastes not time claiming the dagger has their own.");
+                                    System.out.println("They begin to feel like they can do so much more damage than before.");
+                                }
+                            }
+                            System.out.println("The Adventurers leave the Village.");
+                        }
+                        else
+                        {
+                            // If they talk and fail -> cannot enter the village.
+                            System.out.println("The Adventures failed to convince the Guards.");
+                            System.out.println("The Adventures leave the Village.");
+                        }
+                    case "C":
+                        {
+                            // If they leave -> nothing happens.
+                            System.out.println("The Adventures leave the Village.");
+                        }
+                }
+            }
+            else if (kn.getDays() == 2)
+            {
+                System.out.println();
+                System.out.println("==========================================================================================");
+                System.out.println();
+            
+                // Day 2 Prompt
+                System.out.println("The Adventurers move further into the woods. ");
+                System.out.println("After many hours they come to a fork in the path. One path, Dark, twisted trees and ");
+                System.out.println("shifting shadows. The other path, lit with warm light and lined with clover and daisies.");
+                System.out.println("Which path will the Adventures choose?");
+                System.out.println();
+                System.out.println("==========================================================================================");
+                System.out.println();
+            
+                // Day 2 Choices
+                System.out.println("[A] Dark Path.");
+                System.out.println("[B] Light Path.");
+
+                System.out.println();
+                System.out.println("==========================================================================================");
+                System.out.println();
+
+            }
+        }
+    }
+
     public static void Story10Days()
     {
-        // Day 1 Prompt
-        System.out.println("The Adventurers come across a small village in the middle of the woods, in search of supplies."); 
-        System.out.println("They are greeted by guards outside the village walls. They aren't happy people.");
-        System.out.println("You shall not enter, the Guards yell. You must convince them to let you in.");
-        System.out.println("What will the Adventurers do?");
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
-
-        // Day 1 Choices
-        System.out.println("[A] Fight the Guards.");
-        System.out.println("[B] Talk to the Guards.");
-        System.out.println("[C] Leave the Village.");
-
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
-
-        // Day 1 Consequences
-        // If they talk and succeed -> enter the village -> They can trade with villagers.
-        System.out.println("The Adventures enter the Village and trade with the villagers."); // get some random item for adventure.
-        System.out.println("The Adventures leave the Village.");
-
-            // randomized loot
-            // option 1
-            System.out.println("The party buys an Elixir of Swiftness"); // increases the Knights stealth by 2 points
-            System.out.println("The Knight uses the Elixir and begins to feel lighter on their feet.");
-
-            // option 2
-            System.out.println("The party buys a Silver-lined Cloak"); // increases the Mages strength by 2 points
-            System.out.println("The Mage puts on the cloak and begins to feel stronger than before.");
-
-            // option 3
-            System.out.println("The party buys a Sharpened Dragon Fang Dagger."); // increases the Thiefs strength by 2 points
-            System.out.println("The Thief wastes not time claiming the dagger has their own.");
-            System.out.println("They begin to feel like they can do so much more damage than before.");
-
-        // If they talk and fail -> cannot enter the village.
-        System.out.println("The Adventures failed to convince the Guards.");
-        System.out.println("The Adventures leave the Village.");
-
-        // If they fight and win -> enter the village -> cannot trade with villagers.
-        System.out.println("The Adventurers win against the guards and enter the village."); // get nothing from this fight
-        System.out.println("The Villagers fear the Adventurers and flee from them");
-        System.out.println("The Adventures leave the Village");
-
-        // If they fight and lose -> cannot enter the village -> Adventurers that fought lose 1 HP.
-        System.out.println("The Adventures leave the Village");
-
-        // If they leave -> nothing happens.
-        System.out.println("The Adventures leave the Village.");
-
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
-    
-        // Day 2 Prompt
-        System.out.println("The Adventurers move further into the woods. ");
-        System.out.println("After many hours they come to a fork in the path. One path, Dark, twisted trees and ");
-        System.out.println("shifting shadows. The other path, lit with warm light and lined with clover and daisies.");
-        System.out.println("Which path will the Adventures choose?");
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
-    
-        // Day 2 Choices
-        System.out.println("[A] Dark Path.");
-        System.out.println("[B] Light Path.");
-
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
-
-        // Day 2 Consequences
-
         // If they choose the Dark path.
         System.out.println("The Adventurers choose the Dark, twisted path and continue on their way.");
 

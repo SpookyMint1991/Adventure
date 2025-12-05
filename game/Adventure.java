@@ -27,18 +27,19 @@ public class Adventure
         mage.getStats();
         thief.getStats();
 
+
+        /*
         List<Thread> threads = new ArrayList<>();
 
         threads.add(new thread(new));
 
-        // Start all threads
         for (Thread t : threads) {t.start();}
 
-        // Wait for all threads to finish (join)
         for (Thread t : threads) 
         {
             try {t.join();} 
             catch (InterruptedException e) {} 
         }
+            */
     }
 }
