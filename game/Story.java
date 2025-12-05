@@ -107,6 +107,10 @@ public class Story
         // If they choose the Light path.
         System.out.println("The Adventurers choose the Light, floral path and continues on their way.");
 
+        System.out.println();
+        System.out.println("==========================================================================================");
+        System.out.println();
+
         // Day 3 prompt
         System.out.println("A day passes as the Adventurers keep to their chosen path.");
         System.out.println("That is until...");
@@ -124,6 +128,10 @@ public class Story
         System.out.println("[A] Fight the Elves");
         System.out.println("[B] Talk to the Elves");
         System.out.println("[C] Run from the Elves");
+
+        System.out.println();
+        System.out.println("==========================================================================================");
+        System.out.println();
 
         // Day 3 Consequences
         // If they fight and win -> Elves die and the party loots the corpses.
@@ -148,6 +156,10 @@ public class Story
         // If they run and fail to get away -> Lose HP and/or die, if had any previous items, they are taken.
         System.out.println("The Adventurers attempt to flee but failed to get away quick enough.");
         System.out.println("An Elven Mage casts a spell to freeze the Adventurers in place and they are attacked and robbed.");
+
+        System.out.println();
+        System.out.println("==========================================================================================");
+        System.out.println();
     
         // If they chose Dark path.
         System.out.println("The eerie,creepy path comes to an end revealing a massive clearing with a crystaline lagoon.");

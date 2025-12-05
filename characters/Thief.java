@@ -15,8 +15,8 @@ public class Thief extends GameCharacter
         tf.setHP();
         tf.setMP();
         tf.setSP();
-        tf.setStrPoints();
-        tf.setCharPoints();
+        tf.setStrP();
+        tf.setCharP();
     }
 
     @Override
@@ -38,9 +38,9 @@ public class Thief extends GameCharacter
     }
 
     @Override
-    public void getHP()
+    public int getHP()
     {
-        System.out.println("The Thief has " + healthPoints + " health.");
+        return healthPoints;
     }
     
     public void updateHP(int upHP)
@@ -55,9 +55,15 @@ public class Thief extends GameCharacter
     }
 
     @Override
-    public void getMP()
+    public int getMP()
     {
-        System.out.println("The Thief has " + manaPoints + " mana.");
+        return manaPoints;
+    }
+
+    @Override
+    public void updateMP(int upMP) 
+    {
+        this.manaPoints = manaPoints + upMP;
     }
 
     @Override
@@ -67,32 +73,50 @@ public class Thief extends GameCharacter
     }
 
     @Override
-    public void getSP()
+    public int getSP()
     {
-        System.out.println("The Thief has " + stealthPoints + " stealth.");
+        return stealthPoints;
     }
 
     @Override
-     public void setStrPoints()
+    public void updateSP(int upSP) 
+    {
+        this.stealthPoints = strengthPoints + upSP;
+    }
+
+    @Override
+     public void setStrP()
     {
         this.strengthPoints = 5;
     }
 
     @Override
-    public void getStrPoints()
+    public int getStrP()
     {
-         System.out.println("The Thief has " + strengthPoints + " strength.");
+        return strengthPoints;
     }
 
     @Override
-    public void setCharPoints()
+    public void updateStrP(int upStrP) 
+    {
+        this.strengthPoints = strengthPoints + upStrP;
+    }
+
+    @Override
+    public void setCharP()
     {
         this.charismaPoints = 8;
     }
     
     @Override
-    public void getCharPoints()
+    public int getCharP()
     {
-        System.out.println("The Thief has " + charismaPoints + " charisma.");
+        return charismaPoints;
+    }
+
+    @Override
+    public void updatecharP(int upCharP) 
+    {
+        this.charismaPoints = charismaPoints + upCharP;
     }
 }

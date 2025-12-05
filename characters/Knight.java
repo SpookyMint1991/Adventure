@@ -15,8 +15,8 @@ public class Knight extends GameCharacter
         kn.setHP();
         kn.setMP();
         kn.setSP();
-        kn.setStrPoints();
-        kn.setCharPoints();
+        kn.setStrP();
+        kn.setCharP();
     }
     
     @Override
@@ -38,11 +38,12 @@ public class Knight extends GameCharacter
     }
 
     @Override
-    public void getHP()
+    public int getHP()
     {
-        System.out.println("The Knight has " + healthPoints + " health.");
+        return healthPoints;
     }
     
+    @Override
     public void updateHP(int upHP)
     {
         this.healthPoints = healthPoints + upHP;
@@ -55,9 +56,15 @@ public class Knight extends GameCharacter
     }
 
     @Override
-    public void getMP()
+    public int getMP()
     {
-        System.out.println("The Knight has " + manaPoints + " health.");
+        return manaPoints;
+    }
+
+    @Override
+    public void updateMP(int upMP) 
+    {
+        this.manaPoints = manaPoints + upMP;
     }
 
     @Override
@@ -67,32 +74,50 @@ public class Knight extends GameCharacter
     }
 
     @Override
-    public void getSP()
+    public int getSP()
     {
-        System.out.println("The Knight has " + stealthPoints + " stealth.");
+        return stealthPoints;
     }
 
     @Override
-    public void setStrPoints()
+    public void updateSP(int upSP) 
+    {
+        this.stealthPoints = strengthPoints + upSP;
+    }
+
+    @Override
+    public void setStrP()
     {
         this.strengthPoints = 10;
     }
 
     @Override
-    public void getStrPoints()
+    public int getStrP()
     {
-         System.out.println("The Knight has " + strengthPoints + " strength.");
+        return strengthPoints;
     }
 
     @Override
-    public void setCharPoints()
+    public void updateStrP(int upStrP) 
+    {
+        this.strengthPoints = strengthPoints + upStrP;
+    }
+
+    @Override
+    public void setCharP()
     {
         this.charismaPoints = 8;
     }
 
     @Override
-    public void getCharPoints()
+    public int getCharP()
     {
-        System.out.println("The Knight has " + charismaPoints + " charisma.");
+        return charismaPoints;
+    }
+
+    @Override
+    public void updatecharP(int upCharP) 
+    {
+        this.charismaPoints = charismaPoints + upCharP;
     }
 }

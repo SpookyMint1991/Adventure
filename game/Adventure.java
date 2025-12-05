@@ -1,5 +1,6 @@
 package game;
 
+import characters.GameCharacter;
 import characters.Knight;
 import characters.Mage;
 import characters.Thief;
@@ -20,11 +21,14 @@ public class Adventure
         story.intro();
 
         knight.getStats();
-        mage.getStats();
-        thief.getStats();
+        //mage.getStats();
+        //thief.getStats();
 
         //threads go here.
 
+        System.out.println(knight.getHP());
+        knight.updateHP(-4);
+        System.out.println(knight.getHP());
 
     }
 }
