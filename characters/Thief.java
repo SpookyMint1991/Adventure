@@ -43,6 +43,7 @@ public class Thief extends GameCharacter
         return healthPoints;
     }
     
+    @Override
     public void updateHP(int upHP)
     {
         this.healthPoints = healthPoints + upHP;

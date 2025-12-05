@@ -44,6 +44,7 @@ public class Mage extends GameCharacter
         return healthPoints;
     }
     
+    @Override
     public void updateHP(int upHP)
     {
         this.healthPoints = healthPoints + upHP;

@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class DiceRoll 
 {
-    public void rollDice()
-    {}
+    public int rollDice() 
+    {
+        Random rand = new Random();
+        return rand.nextInt(10) + 1;
+    }
 }
