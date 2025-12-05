@@ -7,9 +7,9 @@ public class Mage extends GameCharacter
     private int stealthPoints;
     private int strengthPoints;
     private int charismaPoints;
+    private int days;
 
-    public Mage()
-    {}
+    public Mage() {}
 
     public void setUPMage(Mage mg)
     {
@@ -18,6 +18,7 @@ public class Mage extends GameCharacter
         mg.setSP();
         mg.setStrP();
         mg.setCharP();
+        mg.setDays();
     }
 
     @Override
@@ -33,92 +34,56 @@ public class Mage extends GameCharacter
     }
 
     @Override
-    public void setHP()
-    {
-        this.healthPoints = 10;
-    }
+    public void setHP() {this.healthPoints = 10;}
 
     @Override
-    public int getHP()
-    {
-        return healthPoints;
-    }
+    public int getHP() {return healthPoints;}
     
     @Override
-    public void updateHP(int upHP)
-    {
-        this.healthPoints = healthPoints + upHP;
-    }
+    public void updateHP(int upHP) {this.healthPoints = healthPoints + upHP;}
 
     @Override
-    public void setMP()
-    {
-        this.manaPoints = 10;
-    }
+    public void setMP() {this.manaPoints = 10;}
 
     @Override
-    public int getMP()
-    {
-        return manaPoints;
-    }
+    public int getMP() {return manaPoints;}
 
     @Override
-    public void updateMP(int upMP) 
-    {
-        this.manaPoints = manaPoints + upMP;
-    }
+    public void updateMP(int upMP) {this.manaPoints = manaPoints + upMP;}
 
     @Override
-    public void setSP()
-    {
-        this.stealthPoints = 8;
-    }
+    public void setSP() {this.stealthPoints = 8;}
 
     @Override
-    public int getSP()
-    {
-        return stealthPoints;
-    }
+    public int getSP() {return stealthPoints;}
 
     @Override
-    public void updateSP(int upSP) 
-    {
-        this.stealthPoints = strengthPoints + upSP;
-    }
+    public void updateSP(int upSP) {this.stealthPoints = strengthPoints + upSP;}
 
     @Override
-    public void setStrP()
-    {
-        this.strengthPoints = 3;
-    }
+    public void setStrP() {this.strengthPoints = 3;}
 
     @Override
-    public int getStrP()
-    {
-        return strengthPoints;
-    }
+    public int getStrP() {return strengthPoints;}
 
     @Override
-    public void updateStrP(int upStrP) 
-    {
-        this.strengthPoints = strengthPoints + upStrP;
-    }
+    public void updateStrP(int upStrP) {this.strengthPoints = strengthPoints + upStrP;}
 
     @Override
-    public void setCharP()
-    {
-        this.charismaPoints = 5;
-    }
+    public void setCharP() {this.charismaPoints = 5;}
     
     @Override
-    public int getCharP()
-    {
-        return charismaPoints;
-    }
+    public int getCharP() {return charismaPoints;}
 
     @Override
-    public void updatecharP(int upCharP) 
-    {
-        this.charismaPoints = charismaPoints + upCharP;
-    }
+    public void updatecharP(int upCharP) {this.charismaPoints = charismaPoints + upCharP;}
+
+    @Override
+    public void setDays() {this.days = 0;}
+
+    @Override
+    public int getDays() {return days;}
+
+    @Override
+    public void updateDays(int upDays) {this.days = days + upDays;}
 }

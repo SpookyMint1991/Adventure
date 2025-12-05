@@ -7,6 +7,7 @@ public abstract class GameCharacter
     private int stealthPoints;
     private int strengthPoints;
     private int charismaPoints;
+    private int days;
 
     public void setHP() {}
 
@@ -39,4 +40,10 @@ public abstract class GameCharacter
     public void updatecharP(int upCharP) {}
 
     public void getStats() {}
+
+    public void setDays() {}
+
+    public int getDays() {return days;}
+
+    public void updateDays(int upDays) {}
 }

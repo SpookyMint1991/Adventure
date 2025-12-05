@@ -276,7 +276,11 @@ public class Story
         System.out.println();
         System.out.println("==========================================================================================");
         System.out.println();
+    }
 
+    public void StoryThread()
+    {
+        
     }
 }
 
