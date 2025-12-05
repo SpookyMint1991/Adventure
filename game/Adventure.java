@@ -1,5 +1,8 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import characters.GameCharacter;
 import characters.Knight;
 import characters.Mage;
@@ -24,6 +27,18 @@ public class Adventure
         mage.getStats();
         thief.getStats();
 
-        //threads go here.
+        List<Thread> threads = new ArrayList<>();
+
+        threads.add(new thread(new));
+
+        // Start all threads
+        for (Thread t : threads) {t.start();}
+
+        // Wait for all threads to finish (join)
+        for (Thread t : threads) 
+        {
+            try {t.join();} 
+            catch (InterruptedException e) {} 
+        }
     }
 }

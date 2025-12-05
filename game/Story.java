@@ -5,9 +5,13 @@ import characters.Knight;
 import characters.Mage;
 import characters.Thief;
 
-public class Story
+public class Story implements Runnable
 {
     public void Story() {}
+
+    @Override
+    public void run()
+    {}
 
     public static void intro()
     {
@@ -276,11 +280,6 @@ public class Story
         System.out.println();
         System.out.println("==========================================================================================");
         System.out.println();
-    }
-
-    public void StoryThread()
-    {
-        
     }
 }
 
