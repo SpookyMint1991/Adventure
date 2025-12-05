@@ -1,7 +1,5 @@
 package characters;
 
-import characters.GameCharacter;
-
 public class Knight extends GameCharacter
 {
     private int healthPoints;
@@ -11,6 +9,15 @@ public class Knight extends GameCharacter
     private int charismaPoints;
 
     public Knight() {}
+
+    public void setUPKnight(Knight kn)
+    {
+        kn.setHP();
+        kn.setMP();
+        kn.setSP();
+        kn.setStrPoints();
+        kn.setCharPoints();
+    }
     
     @Override
     public void setHP()
@@ -27,6 +34,7 @@ public class Knight extends GameCharacter
         System.out.println("Stealth   = " + stealthPoints);
         System.out.println("Strength  = " + strengthPoints);
         System.out.println("Charisma  = " + charismaPoints);
+        System.out.println();
     }
 
     @Override

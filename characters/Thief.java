@@ -1,7 +1,5 @@
 package characters;
 
-import characters.GameCharacter;
-
 public class Thief extends GameCharacter
 {
     private int healthPoints;
@@ -12,6 +10,15 @@ public class Thief extends GameCharacter
 
     public Thief() {}
 
+    public void setUPThief(Thief tf)
+    {
+        tf.setHP();
+        tf.setMP();
+        tf.setSP();
+        tf.setStrPoints();
+        tf.setCharPoints();
+    }
+
     @Override
     public void getStats() 
     {
@@ -21,6 +28,7 @@ public class Thief extends GameCharacter
         System.out.println("Stealth   = " + stealthPoints);
         System.out.println("Strength  = " + strengthPoints);
         System.out.println("Charisma  = " + charismaPoints);
+        System.out.println();
     }
 
     @Override

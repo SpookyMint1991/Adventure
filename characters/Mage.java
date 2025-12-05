@@ -1,7 +1,5 @@
 package characters;
 
-import characters.GameCharacter;
-
 public class Mage extends GameCharacter
 {
     private int healthPoints;
@@ -13,6 +11,15 @@ public class Mage extends GameCharacter
     public Mage()
     {}
 
+    public void setUPMage(Mage mg)
+    {
+        mg.setHP();
+        mg.setMP();
+        mg.setSP();
+        mg.setStrPoints();
+        mg.setCharPoints();
+    }
+
     @Override
     public void getStats() 
     {
@@ -22,6 +29,7 @@ public class Mage extends GameCharacter
         System.out.println("Stealth   = " + stealthPoints);
         System.out.println("Strength  = " + strengthPoints);
         System.out.println("Charisma  = " + charismaPoints);
+        System.out.println();
     }
 
     @Override
