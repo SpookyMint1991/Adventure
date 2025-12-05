@@ -118,3 +118,17 @@ public class Test
         return "Partly Cloudy";
 }
 */
+
+/*
+        List<Thread> threads = new ArrayList<>();
+
+        threads.add(new thread(new));
+
+        for (Thread t : threads) {t.start();}
+
+        for (Thread t : threads) 
+        {
+            try {t.join();} 
+            catch (InterruptedException e) {} 
+        }
+        */
