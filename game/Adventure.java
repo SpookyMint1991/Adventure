@@ -17,14 +17,14 @@ public class Adventure
         mage.setUPMage(mage);
         thief.setUPThief(thief);
 
-        story.intro();
+        story.intro(story);
 
         knight.getStats();
         mage.getStats();
         thief.getStats();
 
         knight.updateDays(1);
-        story.tenDayStory(knight);
+        story.tenDayStory(knight, story);
 
     }
 }

@@ -11,7 +11,7 @@ public class Story implements Runnable
     public void run()
     {}
 
-    public void intro()
+    public void intro(Story st)
     {
         System.out.println();
         System.out.println("This is Adventure, a text-based story game of a small group of adventurers.");
@@ -22,12 +22,10 @@ public class Story implements Runnable
         System.out.println("The party must travel and gain experience. To prepare themselves for the upcoming fight.");
         System.out.println("They don't know their foe but they know the fight takes place at the ancient shrine of the ");
         System.out.println("God Shadow Jesus and her desciples");
-        System.out.println();
-        System.out.println("==========================================================================================");
-        System.out.println();
+        st.breakLine();
     }
 
-    public void break()
+    public void breakLine()
     {
         System.out.println();
         System.out.println("==========================================================================================");
@@ -50,12 +48,14 @@ public class Story implements Runnable
         {
             if (start == 1)
             {
+                st.breakLine();
+
                 System.out.println("Would you like to start the Adventure?");
                 System.out.println();
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                st.break();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -75,30 +75,24 @@ public class Story implements Runnable
                 }
                 start = start + 1;
             }
-            if (kn.getHP() > 0 && kn.getDays() == 1)
+            if (play == true && kn.getHP() > 0 && kn.getDays() == 1)
             {
             
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 // Day 1 Prompt
                 System.out.println("The Adventurers come across a small village in the middle of the woods, in search of supplies."); 
                 System.out.println("They are greeted by guards outside the village walls. They aren't happy people.");
                 System.out.println("You shall not enter, the Guards yell. You must convince them to let you in.");
                 System.out.println("What will the Adventurers do?");
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 // Day 1 Choices
                 System.out.println("[A] Fight the Guards.");
                 System.out.println("[B] Talk to the Guards.");
                 System.out.println("[C] Leave the Village.");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next(); 
 
@@ -129,17 +123,13 @@ public class Story implements Runnable
                             System.out.println("very little to give, they can only trade with one.");
                             System.out.println("Who will you trade with?");
                             
-                            System.out.println();
-                            System.out.println("==========================================================================================");
-                            System.out.println();
+                            st.breakLine();
 
                             System.out.println("[A] The Tavern Keeper");
                             System.out.println("[B] The Seamstress");
                             System.out.println("[C] The Blacksmith");
 
-                            System.out.println();
-                            System.out.println("==========================================================================================");
-                            System.out.println();
+                            st.breakLine();
 
                             choice = scnr.next();
                             
@@ -189,26 +179,20 @@ public class Story implements Runnable
 
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -229,26 +213,20 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 2)
             {
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
             
                 // Day 2 Prompt
                 System.out.println("The Adventurers move further into the woods. ");
                 System.out.println("After many hours they come to a fork in the path. One path, Dark, twisted trees and ");
                 System.out.println("shifting shadows. The other path, lit with warm light and lined with clover and daisies.");
                 System.out.println("Which path will the Adventures choose?");
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
             
                 // Day 2 Choices
                 System.out.println("[A] Dark Path.");
                 System.out.println("[B] Light Path.");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
@@ -272,26 +250,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -315,26 +287,20 @@ public class Story implements Runnable
             {
                 if (location == 1) 
                 {
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     // If they chose Dark path.
                     System.out.println("The eerie,creepy path comes to an end revealing a massive clearing with a crystaline lagoon.");
                     System.out.println("Where they are met with a copperous and emerald gilded serpent.");
                     System.out.println("What will you do?");
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     // Day 4 Choices
                     System.out.println("[A] Fight the Serpent.");
                     System.out.println("[B] Talk to the Serpent.");
                     System.out.println("[C] Leave the Lagoon");
 
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     choice = scnr.next();
 
@@ -381,9 +347,7 @@ public class Story implements Runnable
                             System.out.println("The Adventures decide the lagoon and the Serpent are not worth their time.");
                             System.out.println("They leave the lagoon.");
 
-                            System.out.println();
-                            System.out.println("==========================================================================================");
-                            System.out.println();
+                            st.breakLine();
                         }
                         break;
                     }
@@ -392,9 +356,7 @@ public class Story implements Runnable
                 {
                     // Day 3 prompt
 
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     System.out.println("A day passes as the Adventurers keep to their chosen path.");
                     System.out.println("That is until...");
@@ -404,18 +366,14 @@ public class Story implements Runnable
                     // If they chose Light path
                     System.out.println("The Adenturers are ambushed by a band of Elves, all armed with long swords, bows, and staffs.");
                     System.out.println("What will you do?");
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     // Day 3 Choices
                     System.out.println("[A] Fight the Elves");
                     System.out.println("[B] Talk to the Elves");
                     System.out.println("[C] Run from the Elves");
 
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     choice = scnr.next();
 
@@ -486,26 +444,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -526,9 +478,7 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 4)
             {
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
 
                 // Day 4 prompt
@@ -536,17 +486,13 @@ public class Story implements Runnable
                 System.out.println("The quickly find their path and get a move on. But it is not very long before they sight");
                 System.out.println("the first building in their path, an old abandonded windmill.");
                 System.out.println("Does the Adventurers search the windmill?");
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
         
                 // Day 4 choices
                 System.out.println("[A] Approach");
                 System.out.println("[B] Leave");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
@@ -634,26 +580,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -675,9 +615,7 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 5)
             {
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 // Day 5 Prompt
                 System.out.println("As the Adventurers continue on their way, they exit the plains into the mountainous terrain.");
@@ -685,17 +623,13 @@ public class Story implements Runnable
                 System.out.println("their passage. They collectively groan in frustration.");
                 System.out.println("Now they are faced with the question, how will they get back onto the path on the other side?");
                 System.out.println("What will the Adventurers do?");
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
             
                 // Day 5 Choices
                 System.out.println("[A] Go around the gorge by climbing the mountains?");
                 System.out.println("[B] Descend into the gorge and cross the valley floor?");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
@@ -717,26 +651,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -759,19 +687,20 @@ public class Story implements Runnable
             {
                 if (location == 1)
                 {
+                    st.breakLine();
 
                     System.out.println("The Adventurers climb the mountain. They follow a rocky turning snowy path to the top.");
                     System.out.println("They then are faced with a gate and a eerie castle.");
                     System.out.println("It's not long before they are met with guards and a princess.");
                     System.out.println("What will you do?");
 
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();    
+                    st.breakLine();   
                     
                     System.out.println("[A] ");
                     System.out.println("[B] ");
                     System.out.println("[C] ");
+
+                    st.breakLine();
 
                     choice = scnr.next();
 
@@ -798,19 +727,20 @@ public class Story implements Runnable
                 }
                 else if (location == 2)
                 {
+                    st.breakLine();
                     //Day 6 prompts based on previous choice
                     System.out.println("The Adventurers climb down into the gorge. They stumble their way across the earthen floor.");
                     System.out.println("Before long they find a large cave with small amounts of gold... A dragons cave.");
                     System.out.println("As they approach, they feel a gust of air behind them... the dragon is behind them.");
                     System.out.println("What will the Adventurers do?");
 
-                    System.out.println();
-                    System.out.println("==========================================================================================");
-                    System.out.println();
+                    st.breakLine();
 
                     System.out.println("Attempt to fight the dragon.");
                     System.out.println("Talk to the dragon."); 
                     System.out.println("Run from the dragon.");
+
+                    st.breakLine();
                     
 
                     choice = scnr.next();
@@ -838,26 +768,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -878,6 +802,7 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 7)
             {
+                st.breakLine();
 
                 System.out.println("The Adventurers make their way, finally, on the other side of the gorge and back onto ");
                 System.out.println("their path to the shrine.");
@@ -886,18 +811,14 @@ public class Story implements Runnable
                 System.out.println("long, and uneventful.");
                 System.out.println("That is until the Adventures come across a merchant and his broken wagon.");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 //Day 7 choices
                 System.out.println("[A] ");
                 System.out.println("[B] ");
                 System.out.println("[C] ");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
@@ -923,26 +844,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -963,20 +878,18 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 8)
             {
+                st.breakLine();
+
                 //Day 8 prompt
                 System.out.println("After the merchant, the Adventurers continue, but are quickly stopped by a bickering couple.");
                 System.out.println("A witch and a warlock. They demand advice for their situation");
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Ignore their plees for advice.");
                 System.out.println("Become their therapist.");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
@@ -996,26 +909,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -1036,23 +943,21 @@ public class Story implements Runnable
             }
             else if (play == true && kn.getHP() > 0 && kn.getDays() == 9)
             {
+                st.breakLine();
+
                 //Day 9 prompt
                 System.out.println("The Adventurers are tired and know that the path they are on is way to long for their journey.");
                 System.out.println("They decide to search for a short cut. They know they can pass through the closes city or");
                 System.out.println("to risk traveling through the mystical pinkwood forest.");
                 System.out.println("Which with they choose?");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 //Day 9 choices
                 System.out.println("City");
                 System.out.println("Forest");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 if (location == 1)
                 {
@@ -1099,26 +1004,20 @@ public class Story implements Runnable
                 }
                 kn.updateDays(1);
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
                 kn.getStats();
                 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("Continue?");
                 System.out.println("[A] Yes");
                 System.out.println("[B] No");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
                 
                 choice = scnr.next();
 
@@ -1141,17 +1040,13 @@ public class Story implements Runnable
             {
                 //prompt and choices
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 System.out.println("[A] ");
                 System.out.println("[B] ");
                 System.out.println("[C] ");
 
-                System.out.println();
-                System.out.println("==========================================================================================");
-                System.out.println();
+                st.breakLine();
 
                 choice = scnr.next();
 
