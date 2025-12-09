@@ -32,7 +32,7 @@ public class Story implements Runnable
         System.out.println();
     }
 
-    public void tenDayStory(Knight kn, Story st)
+    public void tenDayStory(Knight gc, Story st)
     {
         Scanner scnr = new Scanner(System.in);
         DiceRoll dice = new DiceRoll();
@@ -42,6 +42,7 @@ public class Story implements Runnable
         boolean cursed = false;
         boolean tome = false;
         boolean play = true;
+        boolean hasGold = false;
         int start = 1;
 
         for(int i = 1; i <= 11; i++)
@@ -75,7 +76,7 @@ public class Story implements Runnable
                 }
                 start = start + 1;
             }
-            if (play == true && kn.getHP() > 0 && kn.getDays() == 1)
+            if (play == true && gc.getHP() > 0 && gc.getDays() == 1)
             {
             
                 st.breakLine();
@@ -83,7 +84,7 @@ public class Story implements Runnable
                 // Day 1 Prompt
                 System.out.println("The Adventurers come across a small village in the middle of the woods, in search of supplies."); 
                 System.out.println("They are greeted by guards outside the village walls. They aren't happy people.");
-                System.out.println("You shall not enter, the Guards yell. You must convince them to let you in.");
+                System.out.println("\"You shall not enter,\" the Guards yell. You must convince them to let you in.");
                 System.out.println("What will the Adventurers do?");
                 st.breakLine();
 
@@ -99,7 +100,7 @@ public class Story implements Runnable
                 switch(choice)
                 {
                     case "A": 
-                        if (dice.rollDice(kn.getStrP()) >= dice.rollDice())
+                        if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
                         {
                             // If they fight and win -> enter the village -> cannot trade with villagers.
                             System.out.println("The Adventurers win against the guards and enter the village."); // get nothing from this fight
@@ -110,17 +111,17 @@ public class Story implements Runnable
                         {
                             // If they fight and lose -> cannot enter the village -> Adventurers that fought lose 1 HP.
                             System.out.println("The Adventurer failed to defeat the Guards and lost 1 HP.");
-                            kn.updateHP(-1);
+                            gc.updateHP(-1);
                             System.out.println("The Adventurers leave the Village.");
                         }
                         break;
                     case "B":
-                        if (dice.rollDice(kn.getCharP()) >= dice.rollDice())
+                        if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
                         {
                             // If they talk and succeed -> enter the village -> They can trade with villagers.
                             System.out.println("The Adventurers succeeded to convince the Guards to let them in.");
                             System.out.println("Three Villagers walk up the party and want to trade, but the party has");
-                            System.out.println("very little to give, they can only trade with one.");
+                            System.out.println("very little to give, they can only trade with one Villager.");
                             System.out.println("Who will you trade with?");
                             
                             st.breakLine();
@@ -138,22 +139,22 @@ public class Story implements Runnable
                                 case "A":
                                 {
                                     // option 1
-                                    System.out.println("The party buys an Elixir of Swiftness"); // increases the Knights stealth by 2 points
+                                    System.out.println("The party buys an Elixir of Swiftness from the Tavern Keeper"); // increases the Knights stealth by 2 points
                                     System.out.println("The Knight uses the Elixir and begins to feel lighter on their feet.");
-                                    kn.updateSP(2);
+                                    gc.updateSP(2);
                                 }
                                 break;
                                 case "B":
                                 {
                                     // option 2
-                                    System.out.println("The party buys a Silver-lined Cloak"); // increases the Mages strength by 2 points
+                                    System.out.println("The party buys a Silver-lined Cloak from the Seamstress"); // increases the Mages strength by 2 points
                                     System.out.println("The Mage puts on the cloak and begins to feel stronger than before.");
                                 }
                                 break;
                                 case "C":
                                 {
                                     // option 3
-                                    System.out.println("The party buys a Sharpened Dragon Fang Dagger."); // increases the Thiefs strength by 2 points
+                                    System.out.println("The party buys a Sharpened Dragon Fang Dagger from the Blacksmith."); // increases the Thiefs strength by 2 points
                                     System.out.println("The Thief wastes not time claiming the dagger has their own.");
                                     System.out.println("They begin to feel like they can do so much more damage than before.");
                                 }
@@ -177,14 +178,14 @@ public class Story implements Runnable
                         break;
                 }
 
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -211,7 +212,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 2)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 2)
             {
                 st.breakLine();
             
@@ -248,14 +249,14 @@ public class Story implements Runnable
                     }
                     break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -283,16 +284,16 @@ public class Story implements Runnable
                 }
 
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 3) 
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 3) 
             {
                 if (location == 1) 
                 {
                     st.breakLine();
 
                     // If they chose Dark path.
-                    System.out.println("The eerie,creepy path comes to an end revealing a massive clearing with a crystaline lagoon.");
+                    System.out.println("The eerie, creepy path comes to an end revealing a massive clearing with a crystaline lagoon.");
                     System.out.println("Where they are met with a copperous and emerald gilded serpent.");
-                    System.out.println("What will you do?");
+                    System.out.println("What will the Adventurers do?");
                     st.breakLine();
 
                     // Day 4 Choices
@@ -310,33 +311,33 @@ public class Story implements Runnable
                         {
                             // If they fight and lose -> They cannot win this fight no matter what. There are fights you will never win.
                             System.out.println("The Adventurers attempt to fight the Serpent and are quickly made out to be fools.");
-                            System.out.println("The Adventurers as stupid as they are, all parish like the fools they are.");
-                            kn.updateHP(-100);
+                            System.out.println("The Adventurers, as stupid as they are, all parish.");
+                            gc.updateHP(-1000);
                         }
                         break;
 
                         case "B":
                         {
-                            if (dice.rollDice(kn.getCharP()) >= dice.rollDice()) 
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice()) 
                             {
                                 // If they talk and succeed to convince -> The Adventures gain 2 HP
                                 System.out.println("The Adventurers talk to the Serpent and have a kind conversation. The Serpent ");
-                                System.out.println("reveals his name to be  and allow they party to rest in the clear waters.");
+                                System.out.println("reveals his name to be Vasuki and allow they party to rest in the clear waters.");
                                 System.out.println("The lake rejuvenates the Adventures and they begin to feel healthier than before.");
                                 System.out.println("After a while they say their goodbyes and leave the lagoon.");
-                                kn.updateHP(2);
+                                gc.updateHP(2);
 
                             }
-                            else if (dice.rollDice(kn.getCharP()) < dice.rollDice())
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
                             {
                                 // If they talk and fail to convince -> they are kicked out of the lagoon -> Serpent curses the Party 
                                 // -> lose 2 strenght and 2 mana and 2 stealth
                                 System.out.println("The Adventurers speak rudely to the Serpent and are demanded to leave the lagoon.");
                                 System.out.println("But the rude words get to the Serpent and he curses the party.");
                                 cursed = true;
-                                kn.updateStrP(-2);
-                                kn.updateMP(-2);
-                                kn.updateSP(-2);
+                                gc.updateStrP(-2);
+                                gc.updateMP(-2);
+                                gc.updateSP(-2);
                             }
                         }
                         break;
@@ -381,20 +382,20 @@ public class Story implements Runnable
                     {
                         case "A":
                         {
-                            if (dice.rollDice(kn.getStrP()) >= dice.rollDice()) 
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice()) 
                             {
                                 // If they fight and win -> Elves die and the party loots the corpses.
                                 System.out.println("The Adventurers battled the Elves and succeeded. The Elves were slaughtered.");
                                 System.out.println("They loot the Elves bodies and gained a Potion of Revival.");
 
                             }
-                            else if (dice.rollDice(kn.getStrP()) < dice.rollDice())
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
                             {
                                 // If they fight and lose -> The adventurers that fought lose HP and/or Die
                                 System.out.println("The Adventures battle the Elves and lost. They are forced to Flee.");
                                 System.out.println("The Elves don't bother to chase, they found the party to be quite pathetic.");
                                 chance = dice.randNum(3);
-                                kn.updateHP(-chance);
+                                gc.updateHP(-chance);
                                 System.out.println("The Knight lost " + chance + " health.");
                                 
                             }
@@ -403,19 +404,19 @@ public class Story implements Runnable
 
                         case "B":
                         {
-                            if(dice.rollDice(kn.getCharP()) >= dice.rollDice())
+                            if(dice.rollDice(gc.getCharP()) >= dice.rollDice())
                             {
                                 // If they talk (aka intimidate) and succeed to convince -> The adventurers get away unharmed
                                 System.out.println("The Adventurers convince the Elves that they shouldn't fight them and are allowed to leave.");
                             }
-                            else if (dice.rollDice(kn.getCharP()) < dice.rollDice())
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
                             {
                                 // If they talk (aka intimidate) and fail to convince -> The adventurers are attacked and flee and lose HP or die
                                 System.out.println("The Adventurers fail to convince the Elves to let them go and the Elves attack the Adventures.");
                                 System.out.println("The party is attacked and unable to defend themselves. They are forced to flee.");
                                 System.out.println("The Elves don't bother to chase, they found the party to be quite pathetic.");
                                 chance = dice.randNum(3);
-                                kn.updateHP(-chance);
+                                gc.updateHP(-chance);
                                 System.out.println("The Knight lost " + chance + " health.");
                             }
                         }
@@ -423,33 +424,33 @@ public class Story implements Runnable
 
                         case "C":
                         {
-                            if (dice.rollDice(kn.getSP()) >= dice.rollDice()) 
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice()) 
                             {
                                 // If they run and succeed to get away -> They get away and nothing happens
                                 System.out.println("The Adventures flee from the Elves and quickly lose them. The party is free from their Elven enemies.");
 
                             }
-                            else if (dice.rollDice(kn.getSP()) < dice.rollDice())
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
                             {
                                 // If they run and fail to get away -> Lose HP and/or die, if had any previous items, they are taken.
                                 System.out.println("The Adventurers attempt to flee but failed to get away quick enough.");
                                 System.out.println("An Elven Mage casts a spell to freeze the Adventurers in place and they are attacked and robbed.");
                                 chance = dice.randNum(3);
-                                kn.updateHP(-chance);
+                                gc.updateHP(-chance);
                                 System.out.println("The Knight lost " + chance + " health.");
                             }
                         }
                         break;
                     }
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -476,7 +477,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 4)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 4)
             {
                 st.breakLine();
 
@@ -507,7 +508,7 @@ public class Story implements Runnable
                             System.out.println("As they enter the structure they are meet with an old mad man with a canon.");
                             System.out.println("The party flees but not unscathed.");
                             chance = dice.randNum(3);
-                            kn.updateHP(-chance);
+                            gc.updateHP(-chance);
                             System.out.println("The knight lost " + chance + " health.");
                         }
                         else if (chance == 2)
@@ -544,9 +545,9 @@ public class Story implements Runnable
                                         System.out.println("The Tome is destroyed after this one use. The Adventurers are sad but thankful to");
                                         System.out.println("be free of the curse.");
                                         System.out.println("The Adventurers exit the structure and continue on their way.");
-                                        kn.updateStrP(2);
-                                        kn.updateMP(2);
-                                        kn.updateSP(2);
+                                        gc.updateStrP(2);
+                                        gc.updateMP(2);
+                                        gc.updateSP(2);
                                     }
                                     else
                                     {
@@ -578,14 +579,14 @@ public class Story implements Runnable
                     }
                     break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -613,7 +614,7 @@ public class Story implements Runnable
                 }
 
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 5)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 5)
             {
                 st.breakLine();
 
@@ -649,14 +650,14 @@ public class Story implements Runnable
                     }
                     break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -683,22 +684,24 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 6)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 6)
             {
                 if (location == 1)
                 {
+                    location = 0;
+
                     st.breakLine();
 
-                    System.out.println("The Adventurers climb the mountain. They follow a rocky turning snowy path to the top.");
-                    System.out.println("They then are faced with a gate and a eerie castle.");
+                    System.out.println("The Adventurers climb the mountain. They follow a rocky, turning snowy, path to the top.");
+                    System.out.println("At the top, they are faced with a gate and a magnificant castle.");
                     System.out.println("It's not long before they are met with guards and a princess.");
                     System.out.println("What will you do?");
 
                     st.breakLine();   
                     
-                    System.out.println("[A] ");
-                    System.out.println("[B] ");
-                    System.out.println("[C] ");
+                    System.out.println("[A] Fight the Guards and Princess?");
+                    System.out.println("[B] Talk to the Princess?");
+                    System.out.println("[C] Leave the Castle?");
 
                     st.breakLine();
 
@@ -708,19 +711,65 @@ public class Story implements Runnable
                     {
                         case "A":
                         {
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to battle the Princess and her Guards.");
+                                System.out.println("They successfully defeated the Princess and her guards.");
+                                System.out.println("The Adventurers decend down the mountain.");
+                                location = 1;
 
+                                //add ability to enter castle and explore it. aka... discover Princesses secret and free the Princes
+
+                            }
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to battle the Princess and her Guards.");
+                                System.out.println("They failed to defeat the guards and are taken as slaves.");
+                                location = 2;
+                            }
                         }
                         break;
 
                         case "B":
                         {
-                            
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to talk the Princess and her Guards.");
+                                System.out.println("They convince her to grants them passage through her castle.");
+                                System.out.println("She walks with the Adventurers, making sure they don't stray from the path.");
+                                System.out.println("The Adventures make it to the other side of the castle and descend down the ");
+                                System.out.println("mountain.");
+                                location = 1;
+
+                                //add ability to stray from path and learn of her secret.
+
+                            }
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to talk the Princess and her Guards.");
+                                System.out.println("They failed to convince the princess to let them through and the guards attack.");
+                                System.out.println("The Adventurers are taken as slaves.");
+                                location = 2;
+                            }
                         }
                         break;
 
                         case "C":
                         {
-                            
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to walk away from the Princess and her Guards.");
+                                System.out.println("The princess commands her guards to chase you, but they fail to do so.");
+                                System.out.println("The Adventurers find a away around the castle and descend down the mountain.");
+                                location = 1;
+                            }
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to walk away from the Princess and her Guards.");
+                                System.out.println("The princess commands her guards to chase you and they success in doing so.");
+                                System.out.println("The Adventurers are captured and taken as slaves.");
+                                location = 2;
+                            }
                         }
                         break;
                     }
@@ -736,7 +785,7 @@ public class Story implements Runnable
 
                     st.breakLine();
 
-                    System.out.println("Attempt to fight the dragon.");
+                    System.out.println("Fight the dragon.");
                     System.out.println("Talk to the dragon."); 
                     System.out.println("Run from the dragon.");
 
@@ -749,31 +798,127 @@ public class Story implements Runnable
                     {
                         case "A":
                         {
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to fight the Dragon.");
+                                System.out.println("They successfully land a hit on the Dragon and it cries out for the Adventurers");
+                                System.out.println("to stop. It pleads, please stop hurting me.");
+                                System.out.println("Will the Adventurers stop hurting the Dragon?");
 
+                                st.breakLine();
+
+                                System.out.println("[A] Yes");
+                                System.out.println("[B] No");
+
+                                st.breakLine();
+
+                                choice = scnr.next();
+
+                                switch (choice)
+                                {
+                                    case "A":
+                                    {
+                                        System.out.println("The Adventurers stop hurting the Dragon, much to the Dragons relief.");
+                                        System.out.println("You all are kinder than that Princess up the mountain, the Dragon says.");
+                                        System.out.println("Please leave the my cave and the gorge, the way up is head, the Dragon says.");
+                                        System.out.println("The Adventurers leave in the direction given and exit the gorge.");
+                                    }
+                                    break;
+
+                                    case "B":
+                                    {
+                                        System.out.println("The Adventurers continue their assault on the Dragon.");
+                                        System.out.println("The Dragon doesn't fight back, instead it only cries until it finally goes silent.");
+                                        System.out.println("The Adventurers, being the monsters they are, murdered the Dragon");
+                                        System.out.println("Does the Adventurers take the Dragons gold?");
+
+                                        st.breakLine();
+
+                                        System.out.println("[A] Yes");
+                                        System.out.println("[B] No");
+
+                                        st.breakLine();
+
+                                        choice = scnr.next();
+
+                                        switch (choice)
+                                        {
+                                            case "A":
+                                            {
+                                                System.out.println("The Adventurers, without guilt or good conscience, takes the Dragons gold.");
+                                                hasGold = true;
+                                            }
+                                            break;
+
+                                            case "B":
+                                            {
+                                                System.out.println("The Adventurers feel guilty for their horrible slaughter of the Dragon.");
+                                                System.out.println("They decide not to take the Dragons gold.");
+                                                hasGold = false;
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to attack the Dragon.");
+                                System.out.println("They all stumble and fall, swing and miss, failing to harm the Dragon as it sits and watches");
+                                System.out.println("the Adventurers make fools of themselves. ");
+                                System.out.println("The Dragon awkwardly says, \"please get out of my cave, the exits over there...\"");
+                                System.out.println("The Adventurers, embarrassingly defeated, walk themselves out of the cave and out of the gorge.");
+                            }
                         }
                         break;
 
                         case "B":
                         {
-                            
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to talk to the Dragon and they succeed.");
+                                System.out.println("The Dragon, surprised by the Adventurers kindness and willingness to talk to him,");
+                                System.out.println("allows them to rest in his cave. They all converse for a while and the Dragon warns of the");
+                                System.out.println("Princess up the mountain and how lucky they are for not choosing that path.");
+                                System.out.println("Some time passes and the Adventurers leave, but only after the Dragon offers some gold for their");
+                                System.out.println("kindness.");
+
+                                hasGold = true;
+                                gc.updateHP(2);
+
+                                System.out.println();
+                                System.out.println("The Adventurers have gained gold and some 2 health.");
+                            }
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {
+                                System.out.println("The Adventurers attempt to talk to the Dragon and they fail.");
+                                System.out.println("They speak very rudely and loudly at the Dragon, making him anxious.");
+                                System.out.println("The Dragon demands the Adventuring party to leave the cave at once.");
+                                System.out.println("The Adventurers leave the cave and make their way out of the gorge.");
+
+                                // Add another chance to fight the dragon. Even though you shouldnt fight him. Hes just a baby.
+                            }
                         }
                         break;
 
                         case "C":
                         {
-                            
+                            System.out.println("The Adventurers flee and the Dragon just watches.");
+                            System.out.println("It is made very clear that the Dragon doesn't want to harm them.");
+                            System.out.println("The Adventurers leave and make their way out of the gorge.");
                         }
                         break;
                     }
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -800,7 +945,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 7)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 7)
             {
                 st.breakLine();
 
@@ -826,30 +971,39 @@ public class Story implements Runnable
                 {
                     case "A":
                     {
-
+                        if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                        {}
+                        else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                        {}
                     }
                     break;
 
                     case "B":
                     {
-                        
+                        if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                        {}
+                        else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                        {}
                     }
                     break;
 
                     case "C":
                     {
-                        
+                        if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                        {}
+                        else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                        {}
                     }
                     break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -876,7 +1030,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 8)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 8)
             {
                 st.breakLine();
 
@@ -886,8 +1040,10 @@ public class Story implements Runnable
                 
                 st.breakLine();
 
-                System.out.println("Ignore their plees for advice.");
-                System.out.println("Become their therapist.");
+                System.out.println("Kill the annoying couple.");
+                System.out.println("Become their therapist and talk to them?");
+                System.out.println("Ignore their plees for advice and leave?");
+                
 
                 st.breakLine();
 
@@ -896,25 +1052,40 @@ public class Story implements Runnable
                 switch (choice)
                 {
                     case "A":
-                    {
+                        {
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
 
-                    }
-                    break;
+                        case "B":
+                        {
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
 
-                    case "B":
-                    {
-                        
-                    }
-                    break;
+                        case "C":
+                        {
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -941,7 +1112,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 9)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 9)
             {
                 st.breakLine();
 
@@ -970,13 +1141,28 @@ public class Story implements Runnable
                     {
                         case "A":
                         {
-
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {}
                         }
                         break;
 
                         case "B":
                         {
-                            
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
+
+                        case "C":
+                        {
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {}
                         }
                         break;
                     }
@@ -991,25 +1177,40 @@ public class Story implements Runnable
                     {
                         case "A":
                         {
-
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {}
                         }
                         break;
 
                         case "B":
                         {
-                            
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
+
+                        case "C":
+                        {
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {}
                         }
                         break;
                     }
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
 
                 st.breakLine();
 
                 System.out.println("The day comes to an end.");
                 System.out.println();
 
-                kn.getStats();
+                gc.getStats();
                 
                 st.breakLine();
 
@@ -1036,7 +1237,7 @@ public class Story implements Runnable
                     }        
                 }
             }
-            else if (play == true && kn.getHP() > 0 && kn.getDays() == 10)
+            else if (play == true && gc.getHP() > 0 && gc.getDays() == 10)
             {
                 //prompt and choices
 
@@ -1053,26 +1254,35 @@ public class Story implements Runnable
                 switch (choice)
                 {
                     case "A":
-                    {
+                        {
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
 
-                    }
-                    break;
+                        case "B":
+                        {
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
 
-                    case "B":
-                    {
-                        
-                    }
-                    break;
-
-                    case "C":
-                    {
-                            
-                    }
-                    break;
+                        case "C":
+                        {
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
                 }
-                kn.updateDays(1);
+                gc.updateDays(1);
             }
-            else if (kn.getDays() == 11)
+            else if (gc.getDays() == 11)
             {
                 System.out.println("Thank you for playing Adventure!");
             }
