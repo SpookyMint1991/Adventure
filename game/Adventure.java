@@ -1,9 +1,5 @@
 package game;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import characters.GameCharacter;
 import characters.Knight;
 import characters.Mage;
 import characters.Thief;
@@ -27,6 +23,7 @@ public class Adventure
         mage.getStats();
         thief.getStats();
 
+        knight.updateDays(1);
         story.tenDayStory(knight);
 
     }
