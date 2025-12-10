@@ -1,3 +1,8 @@
+
+// Weather API for the story. Each day is going to start with an opening that tells the weather to build upon the story.
+// But I haven't got around to that part.
+
+
 /* 
 
 import java.io.IOException;

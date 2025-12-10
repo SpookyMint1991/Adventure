@@ -23,8 +23,8 @@ public class Adventure
         mage.getStats();
         thief.getStats();
 
-        knight.updateDays(1);
-        story.tenDayStory(knight, story);
+        knight.updateDays(1);      // Threads go here when story is finally finished and ready for all characters to go through.
+        story.tenDayStory(knight, story);  // currently hard coded to only take one character at a time. will fix later.
 
     }
 }

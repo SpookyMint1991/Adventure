@@ -786,6 +786,8 @@ public class Story implements Runnable
                 }
                 else if (location == 2)
                 {
+                    location = 1;
+
                     st.breakLine();
                     //Day 6 prompts based on previous choice
                     System.out.println("The Adventurers climb down into the gorge. They stumble their way across the earthen floor.");
@@ -795,9 +797,9 @@ public class Story implements Runnable
 
                     st.breakLine();
 
-                    System.out.println("Fight the dragon.");
-                    System.out.println("Talk to the dragon."); 
-                    System.out.println("Run from the dragon.");
+                    System.out.println("[A] Fight the dragon.");
+                    System.out.println("[B] Talk to the dragon."); 
+                    System.out.println("[C] Run from the dragon.");
 
                     st.breakLine();
                     
@@ -1175,7 +1177,7 @@ public class Story implements Runnable
                 st.breakLine();
 
                 //Day 8 prompt
-                System.out.println("After the merchant, the Adventurers continue, but are quickly stopped by a bickering couple.");
+                System.out.println("The Adventurers continue, but are quickly stopped by a bickering couple.");
                 System.out.println("A witch and a warlock. They demand advice for their situation");
                 
                 st.breakLine();

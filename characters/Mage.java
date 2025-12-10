@@ -58,7 +58,7 @@ public class Mage extends GameCharacter
     public int getSP() {return stealthPoints;}
 
     @Override
-    public void updateSP(int upSP) {this.stealthPoints = strengthPoints + upSP;}
+    public void updateSP(int upSP) {this.stealthPoints = stealthPoints + upSP;}
 
     @Override
     public void setStrP(int n) {this.strengthPoints = n;}
