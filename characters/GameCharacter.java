@@ -9,35 +9,35 @@ public abstract class GameCharacter
     private int charismaPoints;
     private int days;
 
-    public void setHP() {}
+    public void setHP(int n) {}
 
     public int getHP() {return healthPoints;}
 
     public void updateHP(int upHP) {}
 
-    public void setMP() {}
+    public void setMP(int n) {}
 
     public int getMP() {return manaPoints;}
 
     public void updateMP(int upMP) {}
 
-    public void setSP() {}
+    public void setSP(int n) {}
 
     public int getSP() {return stealthPoints;}
 
     public void updateSP(int upSP) {}
 
-    public void setStrP() {}
+    public void setStrP(int n) {}
 
     public int getStrP() {return strengthPoints;}
 
     public void updateStrP(int upStrP) {}
 
-    public void setCharP() {}
+    public void setCharP(int n) {}
 
     public int getCharP() {return charismaPoints;}
 
-    public void updatecharP(int upCharP) {}
+    public void updateCharP(int upCharP) {}
 
     public void getStats() {}
 

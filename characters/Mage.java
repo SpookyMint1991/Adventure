@@ -13,11 +13,11 @@ public class Mage extends GameCharacter
 
     public void setUPMage(Mage mg)
     {
-        mg.setHP();
-        mg.setMP();
-        mg.setSP();
-        mg.setStrP();
-        mg.setCharP();
+        mg.setHP(10);
+        mg.setMP(10);
+        mg.setSP(8);
+        mg.setStrP(3);
+        mg.setCharP(5);
         mg.setDays();
     }
 
@@ -34,7 +34,7 @@ public class Mage extends GameCharacter
     }
 
     @Override
-    public void setHP() {this.healthPoints = 10;}
+    public void setHP(int n) {this.healthPoints = n;}
 
     @Override
     public int getHP() {return healthPoints;}
@@ -43,7 +43,7 @@ public class Mage extends GameCharacter
     public void updateHP(int upHP) {this.healthPoints = healthPoints + upHP;}
 
     @Override
-    public void setMP() {this.manaPoints = 10;}
+    public void setMP(int n) {this.manaPoints = n;}
 
     @Override
     public int getMP() {return manaPoints;}
@@ -52,7 +52,7 @@ public class Mage extends GameCharacter
     public void updateMP(int upMP) {this.manaPoints = manaPoints + upMP;}
 
     @Override
-    public void setSP() {this.stealthPoints = 8;}
+    public void setSP(int n) {this.stealthPoints = n;}
 
     @Override
     public int getSP() {return stealthPoints;}
@@ -61,7 +61,7 @@ public class Mage extends GameCharacter
     public void updateSP(int upSP) {this.stealthPoints = strengthPoints + upSP;}
 
     @Override
-    public void setStrP() {this.strengthPoints = 3;}
+    public void setStrP(int n) {this.strengthPoints = n;}
 
     @Override
     public int getStrP() {return strengthPoints;}
@@ -70,13 +70,13 @@ public class Mage extends GameCharacter
     public void updateStrP(int upStrP) {this.strengthPoints = strengthPoints + upStrP;}
 
     @Override
-    public void setCharP() {this.charismaPoints = 5;}
+    public void setCharP(int n) {this.charismaPoints = n;}
     
     @Override
     public int getCharP() {return charismaPoints;}
 
     @Override
-    public void updatecharP(int upCharP) {this.charismaPoints = charismaPoints + upCharP;}
+    public void updateCharP(int upCharP) {this.charismaPoints = charismaPoints + upCharP;}
 
     @Override
     public void setDays() {this.days = 0;}

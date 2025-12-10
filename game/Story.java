@@ -36,15 +36,19 @@ public class Story implements Runnable
     {
         Scanner scnr = new Scanner(System.in);
         DiceRoll dice = new DiceRoll();
+        int start = 1;
         String choice; 
         int location = 0;
         int chance;
-        boolean cursed = false;
-        boolean tome = false;
         boolean play = true;
+        boolean cursed = false;
+        boolean hasTome = false;
+        boolean hadTome = false;
         boolean hasGold = false;
-        int start = 1;
-
+        boolean hasNail = false;
+        boolean hasJar = false;
+        boolean hasCrystal = false;
+        
         for(int i = 1; i <= 11; i++)
         {
             if (start == 1)
@@ -333,7 +337,7 @@ public class Story implements Runnable
                                 // If they talk and fail to convince -> they are kicked out of the lagoon -> Serpent curses the Party 
                                 // -> lose 2 strenght and 2 mana and 2 stealth
                                 System.out.println("The Adventurers speak rudely to the Serpent and are demanded to leave the lagoon.");
-                                System.out.println("But the rude words get to the Serpent and he curses the party.");
+                                System.out.println("The Serpent curses the party for their ill behavior in his lagoon.");
                                 cursed = true;
                                 gc.updateStrP(-2);
                                 gc.updateMP(-2);
@@ -385,8 +389,10 @@ public class Story implements Runnable
                             if (dice.rollDice(gc.getStrP()) >= dice.rollDice()) 
                             {
                                 // If they fight and win -> Elves die and the party loots the corpses.
-                                System.out.println("The Adventurers battled the Elves and succeeded. The Elves were slaughtered.");
+                                System.out.println("The Adventurers battle the Elves and succeed. The Elves are slaughtered.");
                                 System.out.println("They loot the Elves bodies and gained a Potion of Revival.");
+
+                                // add more loot options.
 
                             }
                             else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
@@ -396,7 +402,7 @@ public class Story implements Runnable
                                 System.out.println("The Elves don't bother to chase, they found the party to be quite pathetic.");
                                 chance = dice.randNum(3);
                                 gc.updateHP(-chance);
-                                System.out.println("The Knight lost " + chance + " health.");
+                                System.out.println("The Adventurer lost " + chance + " health.");
                                 
                             }
                         }
@@ -417,7 +423,7 @@ public class Story implements Runnable
                                 System.out.println("The Elves don't bother to chase, they found the party to be quite pathetic.");
                                 chance = dice.randNum(3);
                                 gc.updateHP(-chance);
-                                System.out.println("The Knight lost " + chance + " health.");
+                                System.out.println("The Adventurer lost " + chance + " health.");
                             }
                         }
                         break;
@@ -437,7 +443,7 @@ public class Story implements Runnable
                                 System.out.println("An Elven Mage casts a spell to freeze the Adventurers in place and they are attacked and robbed.");
                                 chance = dice.randNum(3);
                                 gc.updateHP(-chance);
-                                System.out.println("The Knight lost " + chance + " health.");
+                                System.out.println("The Adventurer lost " + chance + " health.");
                             }
                         }
                         break;
@@ -509,7 +515,7 @@ public class Story implements Runnable
                             System.out.println("The party flees but not unscathed.");
                             chance = dice.randNum(3);
                             gc.updateHP(-chance);
-                            System.out.println("The knight lost " + chance + " health.");
+                            System.out.println("The Adventurer lost " + chance + " health.");
                         }
                         else if (chance == 2)
                         {
@@ -548,13 +554,14 @@ public class Story implements Runnable
                                         gc.updateStrP(2);
                                         gc.updateMP(2);
                                         gc.updateSP(2);
+                                        hadTome = true;
                                     }
                                     else
                                     {
                                         // option 2 -> if they are not cursed by the serpent
                                         System.out.println("They find a tome of curses, but they cannot use it, they put it away for later.");
                                         System.out.println("The Adventurers exit the structure and continue on their way.");
-                                        tome = true;
+                                        hasTome = true;
                                     }
                                 }
                                 break;
@@ -725,6 +732,9 @@ public class Story implements Runnable
                             {
                                 System.out.println("The Adventurers attempt to battle the Princess and her Guards.");
                                 System.out.println("They failed to defeat the guards and are taken as slaves.");
+                                chance = dice.randNum(3);
+                                gc.updateHP(-chance);
+                                System.out.println("The Adventurer lost " + chance + " health.");
                                 location = 2;
                             }
                         }
@@ -885,10 +895,11 @@ public class Story implements Runnable
                                 System.out.println("kindness.");
 
                                 hasGold = true;
-                                gc.updateHP(2);
+                                chance = dice.randNum(3);
+                                gc.updateHP(chance);
 
                                 System.out.println();
-                                System.out.println("The Adventurers have gained gold and some 2 health.");
+                                System.out.println("The Adventurers have gained gold and " + chance +" health.");
                             }
                             else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
                             {
@@ -947,54 +958,183 @@ public class Story implements Runnable
             }
             else if (play == true && gc.getHP() > 0 && gc.getDays() == 7)
             {
-                st.breakLine();
-
-                System.out.println("The Adventurers make their way, finally, on the other side of the gorge and back onto ");
-                System.out.println("their path to the shrine.");
-                System.out.println("The landscape calms as the mountainous terrain softens into rolling hills and poppy fields.");
-                System.out.println("The path winds between and over hills, following the contour of the land. The path is mindless,");
-                System.out.println("long, and uneventful.");
-                System.out.println("That is until the Adventures come across a merchant and his broken wagon.");
-
-                st.breakLine();
-
-                //Day 7 choices
-                System.out.println("[A] ");
-                System.out.println("[B] ");
-                System.out.println("[C] ");
-
-                st.breakLine();
-
-                choice = scnr.next();
-
-                switch (choice)
+                if (location == 1)
                 {
-                    case "A":
-                    {
-                        if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
-                        {}
-                        else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
-                        {}
-                    }
-                    break;
+                    st.breakLine();
 
-                    case "B":
-                    {
-                        if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
-                        {}
-                        else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
-                        {}
-                    }
-                    break;
+                    System.out.println("The Adventurers make their way, finally, on the other side of the gorge and back onto ");
+                    System.out.println("their path to the shrine.");
+                    System.out.println("The landscape calms as the mountainous terrain softens into rolling hills and poppy fields.");
+                    System.out.println("The path winds between and over hills, following the contour of the land. The path is mindless,");
+                    System.out.println("long, and uneventful.");
+                    System.out.println("That is until the Adventures come across a Merchant and his broken wagon.");
+                    System.out.println("What will the Adventurers do?");
 
-                    case "C":
+                    st.breakLine();
+
+                    //Day 7 choices
+                    System.out.println("[A] Talk to the Merchant?");
+                    System.out.println("[B] Ignore the Merchant and leave?");
+
+                    st.breakLine();
+
+                    choice = scnr.next();
+
+                    switch (choice)
                     {
-                        if (dice.rollDice(gc.getSP()) >= dice.rollDice())
-                        {}
-                        else if (dice.rollDice(gc.getSP()) < dice.rollDice())
-                        {}
+                        case "A":
+                        {
+                            if (hasGold == true)
+                            {
+                                System.out.println("The Adventurers approach the Merchant and talk to him.");
+                                System.out.println("The Merchant turns to face the party and complains about his broken wagon.");
+                                System.out.println("The Adventurers cannot help him but offer to buy some goods to lighten");
+                                System.out.println("the burden of all the load he was transporting.");
+                                System.out.println("What will the Adventurers buy?");
+
+                                st.breakLine();
+
+                                System.out.println("[A] The Toenail of a Giant");
+                                System.out.println("[B] A Gallon Jar of Ork Snot");
+                                System.out.println("[C] A Shattered 80lb Crystal Ball");
+                                System.out.println("[D] Nothing");
+
+                                st.breakLine();
+
+                                choice = scnr.next();
+
+                                switch (choice)
+                                {
+                                    case "A":
+                                    {
+                                        System.out.println("The Adventurers, reluctantly, chose to purchase the Toenail of the Giant.");
+                                        System.out.println("The Merchant leaps with joy and rants about how he obtained the toenail.");
+                                        System.out.println("Saying that he witnessed the giant stub and injure their toe. That the giant");
+                                        System.out.println("had to remove the nail to as it was damaged so severely.");
+                                        System.out.println("As the Merchant rants, the party slowly backs away from the weird man and back ");
+                                        System.out.println("onto the path to the Shrine.");
+                                        hasGold = false;
+                                        hasNail = true;
+                                    }
+                                    break;
+
+                                    case "B":
+                                    {
+                                        System.out.println("The Adventurers, reluctantly, chose to purchase the Gallon of Ork Snot.");
+                                        System.out.println("The Merchant hollers with excitement, he has never had anyone take interest in the ");
+                                        System.out.println("snot. He tells a story of how he got it, that an Ork was so sick that snot flowed out of");
+                                        System.out.println("their nose like a never ending waterfall and he felt obliged to collect it.");
+                                        System.out.println("As the Merchant rants, the party slowly backs away from the weird man and back ");
+                                        System.out.println("onto the path to the Shrine.");
+                                        hasGold = false;
+                                        hasJar = true;
+                                    }
+                                    break;
+
+                                    case "C":
+                                    {
+                                        System.out.println("The Adventurers, reluctantly, chose to purchase the Shattered Crystal Ball.");
+                                        System.out.println("The Merchant nods happily and tells the story of how he met the witch who owned");
+                                        System.out.println("the crystal ball. Its large size was because the witch was so old, the visions needed to be");
+                                        System.out.println("made bigger for her to see them. The merchant was the one who broken the crystal ball, when he");
+                                        System.out.println("got angry with how slow she read his future.");
+                                        System.out.println("As the Merchant rants, the party slowly backs away from the weird man and back ");
+                                        System.out.println("onto the path to the Shrine.");
+                                        hasGold = false;
+                                        hasCrystal = true;
+                                    }
+                                    break;
+
+                                    case "D":
+                                    {
+                                        System.out.println("The Adventurers refuse to buy any of the Merchants junk.");
+                                        System.out.println("The Merchant starts throwing his useless goods at the party, injuring them.");
+                                        System.out.println("He rants about how nobody sees the value of his prized collection and that everyone is");
+                                        System.out.println("blind to his genius.");
+                                        System.out.println("As the Merchant angrily rants, the party slowly backs away from the weird man and back ");
+                                        System.out.println("onto the path to the Shrine.");
+                                        
+                                        chance = dice.randNum(3);
+                                        gc.updateHP(-chance);
+
+                                        System.out.println();
+                                        System.out.println("The Adventurers have lost " + chance +" health.");
+
+                                    }
+                                    break;
+                                }
+                            }
+                            else if (hasGold == false)
+                            {
+                                System.out.println("The Adventurers approach the Merchant and talk to him.");
+                                System.out.println("The Merchant turns to face the party and complains about his broken wagon.");
+                                System.out.println("The Adventurers cannot help him and wish him sympathy for his situation.");
+                                System.out.println("The Merchant begs the party to buy something, but the party has no gold.");
+                                System.out.println("The Adventurers leave as the Merchant swears obscenely at the party.");
+                                
+                            }
+                        }
+                        break;
+
+                        case "B":
+                        {
+                           System.out.println("The Adventurers walk past the Merchant, ignoring his need for help.");
+                           System.out.println("The Merchant watchs the party pass him and avoid to meet his gaze.");
+                           System.out.println("He mutters under his breath insults and confusion as the party awkwardly leave");
+                           System.out.println("the merchant behind on the path.");
+                        }
+                        break;
                     }
-                    break;
+                }
+                else if (location == 2)
+                {
+                    st.breakLine();
+
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println("");
+                    System.out.println("");
+
+                    st.breakLine();
+
+                    //Day 7 choices
+                    System.out.println("[A] Use Lockpick");
+                    System.out.println("[B] Break out");
+                    System.out.println("[C] Convince guards to let you out.");
+
+                    st.breakLine();
+
+                    choice = scnr.next();
+
+                    switch (choice)
+                    {
+                        case "A":
+                        {
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
+
+                        case "B":
+                        {
+                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
+
+                        case "C":
+                        {
+                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
+                            {}
+                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
+                            {}
+                        }
+                        break;
+                    }
                 }
                 gc.updateDays(1);
 
@@ -1040,9 +1180,9 @@ public class Story implements Runnable
                 
                 st.breakLine();
 
-                System.out.println("Kill the annoying couple.");
-                System.out.println("Become their therapist and talk to them?");
-                System.out.println("Ignore their plees for advice and leave?");
+                System.out.println("[A] Kill the annoying couple.");
+                System.out.println("[B] Become their therapist and talk to them?");
+                System.out.println("[C] Ignore their plees for advice and leave?");
                 
 
                 st.breakLine();
@@ -1053,28 +1193,252 @@ public class Story implements Runnable
                 {
                     case "A":
                         {
-                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice())
-                            {}
+                            if (dice.rollDice(gc.getStrP()) >= dice.rollDice() + 2)
+                            {
+                                System.out.println("The Adventurers attack the bickering couple and succeed in killing them.");
+                                System.out.println("The couples bodies disintegrate into dust leaving nothing.");
+                                System.out.println("The souls of the couple emerge from the ashes and lays a curse on the party.");
+                                System.out.println("With the power of the Witch and Warlock combind, the party starts to feel weak.");
+                                gc.setHP(gc.getHP() - gc.getHP() + 1);
+                                gc.setMP(gc.getMP() - gc.getMP() + 1);
+                                gc.setSP(gc.getSP() - gc.getSP() + 1);
+                                gc.setStrP(gc.getStrP() - gc.getStrP() + 1);
+                                gc.setCharP(gc.getCharP() - gc.getCharP() + 1);
+
+                                System.out.println();
+                                System.out.println("The Adventurers stats are all reduced to 1.");
+
+                                System.out.println();
+                                System.out.println("The Adventurers flee before the consequences of their idiotic action causes");
+                                System.out.println("them any more problems.");
+                            }
                             else if (dice.rollDice(gc.getStrP()) < dice.rollDice())
-                            {}
+                            {
+                                System.out.println("The Adventurers attack the bickering couple and fail.");
+                                System.out.println("The couple, angered further by the attempt on their lives, curse the party.");
+                                System.out.println("Both the Witch and the Warlock place curses on the Adventurers.");
+                                gc.setStrP(gc.getStrP() - gc.getStrP() + 1);
+                                gc.setSP(gc.getSP() - gc.getSP() + 1);
+
+                                System.out.println();
+                                System.out.println("The Adventurers Strength and Stealth were both reduced to 1.");
+
+                                System.out.println();
+                                System.out.println("The Adventurers flee before the consequences of their idiotic action causes");
+                                System.out.println("them any more problems.");
+                            }
                         }
                         break;
 
                         case "B":
                         {
-                            if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
-                            {}
-                            else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
-                            {}
+                            if (hasTome == true)
+                            {
+                                System.out.println("The Adventurers decide to help the Couple with their problems.");
+                                System.out.println("The Witch explains that a tome of hers went missing and that she knows her");
+                                System.out.println("husband had something to do with it but can't use a truth spell to get a confession... ");
+                                System.out.println("The Warlock refused this accusation. He suggest that it was stolen or that she lost it herself...");
+                                System.out.println();
+                                System.out.println("The Witch describes the tome to the Adventures and it sounds familiar to them");
+                                System.out.println("Do the Adventurers show the Witch the tome they found days ago?");
+                                
+                                st.breakLine();
+
+                                System.out.println("[A] Yes");
+                                System.out.println("[B] No");
+
+                                st.breakLine();
+
+                                choice = scnr.next();
+
+                                switch (choice)
+                                {
+                                    case "A":
+                                    {
+                                        System.out.println("The Adventurers show the Witch the tome they found and tell her where they found it.");
+                                        System.out.println("She is overjoyed to see her missing tome. The Warlocks face pales in comparison.");
+                                        System.out.println("She takes it from the Adventurers and opens it up, flipping rapidly through the ");
+                                        System.out.println("pages until she finds what shes looking for. Then she turns to the Warlock and ");
+                                        System.out.println("begins reciting an incantation as he trys to run, but its too late. The Warlock turns into a rock.");
+                                        System.out.println("She picks up the rock and throws it into the river.");
+                                        System.out.println("She thanks the Adventurers and blesses them before going their separate ways.");
+                                        hasTome = false;
+                                        gc.updateHP(2);
+                                        gc.updateMP(2);
+
+                                    }
+                                    break;
+
+                                    case "B":
+                                    {
+                                        System.out.println("The Adventurers choose not to tell the Witch that they have her tome.");
+                                        System.out.println("They apologize for not being able to help but they come off as insincere.");
+
+                                        chance = dice.randNum(3);
+
+                                        switch (chance)
+                                        {
+                                            case 1:
+                                            {
+                                                System.out.println("The Witch doesn't pick up on the lie and thanks the Adventurers for listening.");
+                                                System.out.println("The Adventurers walk away with the witches tome in hand as she is heard yelling at");
+                                                System.out.println("the Warlock in the distance.");
+                                            }
+                                            break;
+
+                                            case 2:
+                                            {   
+                                                System.out.println("The Witch picks up on the weird tone but doesn't push for answers.");
+                                                System.out.println("She thanks the Adventurers for listening and turns back to yelling at the Warlock.");
+                                            }
+                                            break;
+
+                                            case 3:
+                                            {
+                                                System.out.println("The Witch picks up on this tone and pushes for answers, \"why are you all acting ");
+                                                System.out.println("like you are hiding something?\" she inquires");
+
+                                                if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                                                {
+                                                    System.out.println("The Adventurers quickly apologize and say that they didn't mean to come off as suspicious... ");
+                                                    System.out.println("They convince her that they are just really tired and shouldn't be in the position of helping");
+                                                    System.out.println("others at the moment. The Witch apologizes for being pushy and lets the Adventurers go.");
+                                                    System.out.println("They continue down the path towards the Shrine.");
+                                                }
+                                                else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                                                {
+                                                    System.out.println("The Adventurers stutter to respond and come off as more suspicious... ");
+                                                    System.out.println("They fail to convince her that they haven't seen her tome and she gets angry. She points her finger");
+                                                    System.out.println("at the Adventurers and places a truth spell on them. They quickly admit to having her tome.");
+                                                    System.out.println("She becomes unconcontrollably enraged and curses the party, as they run to escape, they drop her tome.");
+                                                    System.out.println("They run down the path towards the Shrine, tomeless and cursed.");
+                                                    hasTome = false;
+                                                    hadTome = true;
+                                                    gc.updateHP(-3);
+                                                }
+                                            }
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+
+                            }
+                            else if (hasTome == false && hadTome == false)
+                            {
+                                System.out.println("The Adventurers decide to help the Couple with their problems.");
+                                System.out.println("The Witch explains that a tome of hers went missing and that she knows her");
+                                System.out.println("husband had something to do with it but can't use a truth spell to get a confession... ");
+                                System.out.println("The Warlock refused this accusation. He suggest that it was stolen or that she lost it herself...");
+                                System.out.println();
+                                System.out.println("The Adventurers don't know anything about the tome she describes and apologizes for not being of");
+                                System.out.println("any help, but that they will keep an eye out for it. She thanks them and lets them go.");
+                                System.out.println("She turns to continue yelling at the Warlock as the Adventurers leave and conitinue on their path.");
+                            }
+                            else if (hasTome == false && hadTome == true)
+                            {
+                                System.out.println("The Adventurers decide to help the Couple with their problems.");
+                                System.out.println("The Witch explains that a tome of hers went missing and that she knows her");
+                                System.out.println("husband had something to do with it but can't use a truth spell to get a confession... ");
+                                System.out.println("The Warlock refused this accusation. He suggest that it was stolen or that she lost it herself...");
+                                System.out.println();
+                                System.out.println("The Adventurers recognize the tome she describes but they used it to free themselves of the Serpents");
+                                System.out.println("curse and it was destroyed... Do they tell her they destroyed her tome?");
+
+                                st.breakLine();
+
+                                System.out.println("[A] Yes");
+                                System.out.println("[B] No");
+
+                                st.breakLine();
+
+                                choice = scnr.next();
+
+                                switch (choice)
+                                {
+                                    case "A":
+                                    {
+                                        System.out.println("The Adventurers decide to tell her the truth, that they had her tome, but they used it to remove");
+                                        System.out.println("a curse that resulted in the books ruin. She looks shocked, but honestly relieved. She thanks the");
+                                        System.out.println("Adventurers for their honesty. Saddened that she will never reunite with her beloved book, she lets the");
+                                        System.out.println("party leave and continue on their journey.");
+                                        System.out.println("She walks away, parting from the Warlock with another word.");
+                                        System.out.println();
+                                        System.out.println("The Adventurers walk down the path, saddened that they contributed to her pain.");
+                                    }
+                                    break;
+
+                                    case "B":
+                                    {
+                                        System.out.println("The Adventurers decide not to tell her the truth, that they had her tome and destroyed it.");
+                                        System.out.println("They lie and tell her that they have never seen her tome, but their words come off as insincere.");
+
+                                        chance = dice.randNum(3);
+
+                                        switch (chance)
+                                        {
+                                            case 1:
+                                            {
+                                                System.out.println("The Witch doesn't pick up on the lie and thanks the Adventurers for listening.");
+                                                System.out.println("The Adventurers walk away with the witches tome in hand as she is heard yelling at");
+                                                System.out.println("the Warlock in the distance.");
+                                            }
+                                            break;
+
+                                            case 2:
+                                            {   
+                                                System.out.println("The Witch picks up on the weird tone but doesn't push for answers.");
+                                                System.out.println("She thanks the Adventurers for listening and turns back to yelling at the Warlock.");
+                                                System.out.println("The Adventurers walk away with the witches tome in hand as she is heard yelling at");
+                                                System.out.println("the Warlock in the distance.");
+                                            }
+                                            break;
+
+                                            case 3:
+                                            {
+                                                System.out.println("The Witch picks up on this tone and pushes for answers, \"why are you all acting ");
+                                                System.out.println("like you are hiding something?\" she inquires");
+
+                                                if (dice.rollDice(gc.getCharP()) >= dice.rollDice())
+                                                {
+                                                    System.out.println("The Adventurers quickly apologize and say that they didn't mean to come off as suspicious... ");
+                                                    System.out.println("They convince her that they are just really tired and shouldn't be in the position of helping");
+                                                    System.out.println("others at the moment. The Witch apologizes for being pushy and lets the Adventurers go.");
+                                                    System.out.println("They continue down the path towards the Shrine.");
+                                                }
+                                                else if (dice.rollDice(gc.getCharP()) < dice.rollDice())
+                                                {
+                                                    System.out.println("The Adventurers stutter to respond and come off as more suspicious... ");
+                                                    System.out.println("They fail to convince her that they haven't seen her tome and she gets angry. She points her finger");
+                                                    System.out.println("at the Adventurers and places a truth spell on them. They quickly admit to had her tome.");
+                                                    System.out.println("But it was destroyed to remove a curse. She become livid. \"YOU IDIOTS NOT ONLY HAD MY TOME, ");
+                                                    System.out.println("BUT DESTOYED IT AND TRIED TO LIE ABOUT IT!\", she shreeks. ");
+                                                    System.out.println("She curses the party with the worst curse she can muster...");
+                                                    gc.setHP(gc.getHP() - gc.getHP() + 3);
+                                                    gc.setMP(gc.getMP() - gc.getMP() + 3);
+                                                    gc.setSP(gc.getSP() - gc.getSP() + 3);
+                                                    gc.setStrP(gc.getStrP() - gc.getStrP() + 3);
+                                                    gc.setCharP(gc.getCharP() - gc.getCharP() + 3);
+
+                                                    System.out.println();
+                                                    System.out.println("The Adventures stats were all reduced to 3.");
+
+                                                    System.out.println();
+                                                    System.out.println("The Adventures leave ashamed of their decisions.");
+                                                }
+                                            }
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
                         }
                         break;
 
                         case "C":
                         {
-                            if (dice.rollDice(gc.getSP()) >= dice.rollDice())
-                            {}
-                            else if (dice.rollDice(gc.getSP()) < dice.rollDice())
-                            {}
+                            System.out.println("The Adventurers walk past the couple, refusing to make eye contact.");
+                            System.out.println("The Adventurers walk away, leaving the couple alone as they continue to argue.");
                         }
                         break;
                 }
